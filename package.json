@@ -1,5 +1,5 @@
 {
-  "name": "anzu",
+  "name": "@withinrafael/anzu",
   "version": "0.1.0",
   "description": "Dump installed Universal Windows App package contents",
   "license": "MIT",
