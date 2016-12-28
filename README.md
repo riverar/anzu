@@ -7,15 +7,10 @@ Dumps installed Universal Windows App package contents, notably those that are e
 Powered by [Frida](https://www.frida.re).
  
 ## Installation and usage ##
-1. `npm install --production @withinrafael/anzu`
+1. `npm install @withinrafael/anzu -g`
 2. `anzu running-uwp-process.exe .\path\to\destination\folder`
 3. Wait.
 4. You're done, congratulations.
-
-## Hacking ##
-1. Ensure `NODE_ENV` is set correctly
-2. `npm install @withinrafael/anzu`
-3. `npm run watch` will monitor `src\agent.js` for changes and compile on the fly
 
 ## Supported operating systems ##
 - Windows 10

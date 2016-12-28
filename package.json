@@ -11,7 +11,11 @@
   "bin": {
     "anzu": "anzu.js"
   },
-  "files": ["anzu.js", "src", "dst"],
+  "files": [
+    "anzu.js",
+    "src",
+    "dst"
+  ],
   "browserify": {
     "transform": [
       [
@@ -25,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "co": "^4.6.0",
     "co-sleep": "0.0.1",
     "frida": "^8.2.3",
     "fs-promise": "^1.0.0"
