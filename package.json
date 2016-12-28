@@ -1,0 +1,49 @@
+{
+  "name": "anzu",
+  "version": "0.1.0",
+  "description": "Dump installed Universal Windows App package contents",
+  "license": "MIT",
+  "author": {
+    "name": "Rafael Rivera",
+    "url": "https://twitter.com/WithinRafael"
+  },
+  "main": "anzu.js",
+  "bin": {
+    "anzu": "anzu.js"
+  },
+  "files": ["anzu.js", "src", "dst"],
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "co-sleep": "0.0.1",
+    "frida": "^8.2.3",
+    "fs-promise": "^1.0.0"
+  },
+  "devDependencies": {
+    "frida-compile": "^3.0.0"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "frida-compile src/agent.js -o dst/agent.js",
+    "watch": "frida-compile src/agent.js -o dst/agent.js -w",
+    "anzu": "node anzu.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/WithinRafael/anzu.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/WithinRafael/anzu/issues"
+  },
+  "homepage": "https://gitlab.com/WithinRafael/anzu"
+}
