@@ -495,7 +495,7 @@ function getPackageFullNameForProcess(processHandle) {
 function getWindowsAppsPath() {
     // BUGBUG: Apps can be installed on other drives
     // https://gitlab.com/WithinRafael/anzu/issues/1
-    var pathWithVarsPtr = Memory.allocUtf16String('%ProgramFiles%\\WindowsApps');
+    var pathWithVarsPtr = Memory.allocUtf16String('%ProgramW6432%\\WindowsApps');
     var pathWithoutVarsPtr = Memory.alloc(win32.maxPath);
     win32.expandEnvironmentStrings(pathWithVarsPtr, pathWithoutVarsPtr, win32.maxPath);
 
