@@ -1,8 +1,8 @@
 # anzu
 
-![Image of anzu dumping Astroneer](gfx/example.png)
+![Image of anzu dumping Astroneer](https://github.com/riverar/anzu/raw/master/gfx/example.png)
 
-Dumps installed Universal Windows App package contents, notably those that are encrypted, with some simple JavaScript.
+Dumps installed Universal Windows Platform app package contents, notably those that are encrypted, with some simple JavaScript.
 
 Powered by [Frida](https://www.frida.re).
  
@@ -17,5 +17,5 @@ Powered by [Frida](https://www.frida.re).
 - Windows 10
 
 ## Known issues ##
-- anzu will not dump apps that are installed outside %ProgramFiles%\WindowsApps (#1)
+- anzu will not dump apps that are installed outside %ProgramFiles%\WindowsApps
 - anzu currently requires manual DACL alteration (see install instructions)
