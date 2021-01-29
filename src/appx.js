@@ -15,8 +15,11 @@ export function getPackageFullNameForProcess(processHandle) {
     const packageFullNamePtr = Memory.alloc(PACKAGE_FULL_NAME_MAX_LENGTH)
     
     let packageFullName = '';
-    if(getPackageFullName(processHandle, packageFullNameLengthPtr, packageFullNamePtr) == SUCCESS) {
+    let result = getPackageFullName(processHandle, packageFullNameLengthPtr, packageFullNamePtr);
+    if(result == SUCCESS) {
         packageFullName = Memory.readUtf16String(packageFullNamePtr)
+    } else {
+        console.debug(`GetPackageFullName failed (return: ${result})`)
     }
 
     return packageFullName;

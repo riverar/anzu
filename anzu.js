@@ -15,15 +15,14 @@ console.log('')
 
 const [processName, destinationPath] = process.argv.slice(2)
 if (typeof processName != 'string' || typeof destinationPath != 'string') {
-  console.log('Usage: ... <process name> <destination path>')
+  console.log('Usage: ... <process name|id> <destination path>')
   return
 }
 
 co(function* () {
-  const session = yield frida.attach(processName)
+  const session = yield frida.attach(isNaN(processName) ? processName : parseInt(processName))
   const script = yield session.createScript((yield fs.readFile(require.resolve('./dst/agent'))).toString())
-
-  script.events.listen('message', (message, data) => {
+  script.message.connect((message, data) => {
     if (message.payload.type !== undefined || message.payload.type === 'progress') {
       console.log(` [>] ${message.payload.path}`)
     } else {
@@ -38,7 +37,7 @@ co(function* () {
     yield sleep(5000)
   }
 
-  const agent = yield script.getExports()
+  const agent = script.exports;
   const packageFullName = yield agent.getPackageFullName()
   if (packageFullName.length <= 0) {
     yield Promise.reject(new Error('Specified process has no identity.'))

@@ -7,6 +7,14 @@ export const findNextFile = new NativeFunction(Module.findExportByName('kernel32
 export const findClose = new NativeFunction(Module.findExportByName('kernel32.dll', 'FindClose'), 'int', ['pointer'])
 export const createFile = new NativeFunction(Module.findExportByName('kernel32.dll', 'CreateFileW'), 'pointer', ['pointer', 'uint', 'uint', 'pointer', 'uint', 'uint', 'pointer'])
 export const shCreateDirectoryEx = new NativeFunction(Module.findExportByName('shell32.dll', 'SHCreateDirectoryExW'), 'int', ['pointer', 'pointer', 'pointer'])
+export const openProcess = new NativeFunction(Module.findExportByName('kernel32.dll', 'OpenProcess'), 'uint', ['uint', 'uint', 'uint'])
+export const getCurrentProcessId = new NativeFunction(Module.findExportByName('kernel32.dll', 'GetCurrentProcessId'), 'uint', [])
+export function getCurrentProcessLimited() {
+    return openProcess(
+        desiredAccess.processQueryLimitedInformation,
+        0,
+        getCurrentProcessId())
+}
 
 // minwinbase.h
 export class WIN32_FIND_DATA {
@@ -62,4 +70,8 @@ export const disposition = {
     openExisting: 3,
     openAlways: 4,
     truncateExisting: 5
+}
+
+export const desiredAccess = {
+    processQueryLimitedInformation: 0x1000
 }

@@ -1,6 +1,6 @@
 {
   "name": "@withinrafael/anzu",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Dump installed Universal Windows App package contents",
   "license": "MIT",
   "author": {
@@ -50,7 +50,7 @@
   "scripts": {
     "build": "frida-compile src/agent.js -o dst/agent.js",
     "watch": "frida-compile src/agent.js -o dst/agent.js -w",
-    "anzu": "node anzu.js"
+    "anzu": "npm run build && node anzu.js"
   },
   "repository": {
     "type": "git",

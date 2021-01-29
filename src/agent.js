@@ -8,13 +8,13 @@ const nullptr = NULL
 rpc.exports = {
   getPackageFullName: () => {
     return co(function* () {
-      return yield Promise.resolve(appx.getPackageFullNameForProcess(win32.getCurrentProcess()))
+      return yield Promise.resolve(appx.getPackageFullNameForProcess(win32.getCurrentProcessLimited()))
     })
   },
 
   dumpPackageContentsInto: (to) => {
     return co(function* () {
-      const from = `${appx.getWindowsAppsPath()}\\${appx.getPackageFullNameForProcess(win32.getCurrentProcess())}\\*.*`
+      const from = `${appx.getWindowsAppsPath()}\\${appx.getPackageFullNameForProcess(win32.getCurrentProcessLimited())}\\*.*`
       return yield dumpPackageContents(from, to)
     })
   }
